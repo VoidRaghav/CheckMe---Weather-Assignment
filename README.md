@@ -4,9 +4,9 @@
 
 ---
 
-| Night / Empty state | Rain (Switzerland) | Sunny (America) |
-|---|---|---|
-| ![Empty state](public/screenshots/preview-empty.png) | ![Rain](public/screenshots/preview-night.png) | *(add yours)* |
+![Screenshot 1](uploads/screenshot-1.png)
+![Screenshot 2](uploads/screenshot-2.png)
+![Screenshot 3](uploads/screenshot-3.png)
 
 ---
 
