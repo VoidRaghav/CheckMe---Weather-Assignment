@@ -59,14 +59,14 @@ function buildForecast(d: any): ForecastDay[] {
 
 export async function fetchWeatherByCity(city: string, units: Units): Promise<WeatherData> {
   const [currentRes, forecastRes] = await Promise.all([
-    fetch(`${BASE}/weather?q=${encodeURIComponent(city)}&appid=${key()}&units=${units}`),
-    fetch(`${BASE}/forecast?q=${encodeURIComponent(city)}&appid=${key()}&units=${units}`),
+    fetch(`${BASE}/weather?q=${encodeURIComponent(city)}&appid=${key()}&units=${units}`, { cache: "no-store" }),
+    fetch(`${BASE}/forecast?q=${encodeURIComponent(city)}&appid=${key()}&units=${units}`, { cache: "no-store" }),
   ]);
 
-  if (!currentRes.ok) {
-    if (currentRes.status === 404) throw new Error("City not found. Check the spelling and try again.");
-    throw new Error("Failed to fetch weather data. Please try again.");
-  }
+  if (currentRes.status === 404) throw new Error("City not found. Check the spelling and try again.");
+  if (currentRes.status === 429) throw new Error("Too many requests — please wait a moment and try again.");
+  if (currentRes.status === 401) throw new Error("Invalid API key. Check your NEXT_PUBLIC_OWM_API_KEY.");
+  if (!currentRes.ok) throw new Error(`Weather API error (${currentRes.status}). Please try again.`);
 
   const [currentData, forecastData] = await Promise.all([currentRes.json(), forecastRes.json()]);
 

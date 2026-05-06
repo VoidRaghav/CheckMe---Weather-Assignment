@@ -123,6 +123,7 @@ export default function SearchBar({ onSearch, onGeoSearch, geoLoading, loading }
         <div className="absolute right-2 flex items-center gap-1">
           {query && (
             <motion.button
+              type="button"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               onClick={() => { setQuery(""); setSuggestions([]); }}
@@ -133,6 +134,7 @@ export default function SearchBar({ onSearch, onGeoSearch, geoLoading, loading }
           )}
 
           <motion.button
+            type="button"
             onClick={onGeoSearch}
             disabled={geoLoading}
             whileHover={{ scale: 1.05 }}
@@ -152,6 +154,7 @@ export default function SearchBar({ onSearch, onGeoSearch, geoLoading, loading }
           </motion.button>
 
           <motion.button
+            type="button"
             onClick={() => handleSubmit()}
             disabled={loading || !query.trim()}
             whileHover={{ scale: 1.05 }}
