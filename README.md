@@ -1,6 +1,6 @@
 # Skycast — Weather Dashboard
 
-> Live demo: **[Deploy link here after hosting]**
+> Live demo: **[https://check-me-weather-assignment.vercel.app/]**
 
 ---
 
